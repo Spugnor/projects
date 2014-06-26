@@ -1,0 +1,96 @@
+	<!DOCTYPE html>
+	<html xmlns:ng="http://angularjs.org" ng-app="ninjafactory">
+	<head>
+		<title>no ninja, no cry</title>
+	</head>
+	<body>
+	 <script src="angular.js">
+	 
+	 var myApp= angular.module('codingDojo',[])
+	 	
+ 	myApp.factory('ninjaFactory', function () {
+	  	var factory = {};
+	  	var ninjas = [];
+	  	var countNinjas = 0;
+
+	  	factory.addNinja - function () {
+
+	  	}
+
+	  	factory.removeNinja = function(checkNinjaName) {
+	  		for(i=0;i<ninjas.length;i++ ){
+	  			if (ninjas[i].name=checkNinjaName){
+	  				ninjas.splice(i,i+1);
+	  			}
+	  	}
+	  }
+	  	factory.getNinjas= function(){
+	  		return ninjas;
+	  	}
+	  	return factory;
+	});
+
+ 	myApp.controller('seattleController', [ninjaFactory, function($scope){
+ 		$scope.addNinja=function(){
+ 			var new_ninja = {
+ 				name: $scope.ninja.name,
+ 				belt: $scope.ninja.belt,
+ 				dojo: 'Seattle'
+ 			}
+ 			ninjaFactory.addNinja(new_ninja);
+ 		}
+
+ 		$scope.removeNinja = function(checkNinjaName) {
+ 			ninjaFactory.removeNinja(checkNinjaName);
+
+
+ 		}
+ 		$scope.showNinja=function(){
+ 			$scope.ninjas= ninjafactory.getNinjas()
+ 		}
+ 	}]);
+
+ 	myApp.controller('MVController', [ninjaFactory, function($scope){
+ 		$scope.addNinja=function(){
+ 			var new_ninja = {
+ 				name: $scope.ninja.name,
+ 				belt: $scope.ninja.belt,
+ 				dojo: 'Mountain View'
+ 			}
+ 			ninjaFactory.addNinja(new_ninja);
+ 		}
+
+ 		$scope.removeNinja = function() {
+ 
+ 		}
+ 	}]);
+
+	
+
+	
+
+	 // var myfirstmodule= angular.module('people',[])
+  //    	 myfirstmodule.controller('peoplecontroller',function($scope){
+  //    	 	$scope.people=[{title: 'mario'},{title: 'luigi'},{title: 'bowser'}];
+  //    		$scope.add=function(){
+  //    			// $scope.people.push({title: 'wario', job: 'bum'})
+  //    				$scope.people.push({title: $scope.newperson.title})
+  //    		}
+  //    	})
+	</script>
+
+	<div id= "mv"> 
+
+	</div>
+	<div id="seattle"> 
+
+	</div>
+	</body>
+	</html>
+
+
+	<!-- 
+	count ninjas
+	ninjas by dojo
+	add ninja for each place
+	-->
